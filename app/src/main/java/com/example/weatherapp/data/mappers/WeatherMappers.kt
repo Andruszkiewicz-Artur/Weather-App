@@ -1,7 +1,7 @@
 package com.example.weatherapp.data.mappers
 
 import com.example.weatherapp.data.dto.WeatherDto
-import com.example.weatherapp.data.remote.WeatherDataDto
+import com.example.weatherapp.data.dto.WeatherDataDto
 import com.example.weatherapp.domain.weather.WeatherData
 import com.example.weatherapp.domain.weather.WeatherInfo
 import com.example.weatherapp.domain.weather.WeatherType
@@ -15,7 +15,7 @@ private data class IndexedWeatherData(
 
 fun WeatherDataDto.toWeatherDataMap(): Map<Int, List<WeatherData>> {
     return time.mapIndexed { index, time ->
-        val temperature = temperature[index]
+        val temperature = temperatures[index]
         val weatherCode = weatherCodes[index]
         val windSpeed = windSpeeds[index]
         val pressure = pressures[index]

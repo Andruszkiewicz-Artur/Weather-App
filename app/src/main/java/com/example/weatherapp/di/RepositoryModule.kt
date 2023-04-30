@@ -1,8 +1,6 @@
 package com.example.weatherapp.di
 
-import com.example.weatherapp.data.location.DefaultLocationTracker
 import com.example.weatherapp.data.repository.WeatherRepositoryImpl
-import com.example.weatherapp.domain.location.LocationTracker
 import com.example.weatherapp.domain.repository.WeatherRepository
 import dagger.Binds
 import dagger.Module
