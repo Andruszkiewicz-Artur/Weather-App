@@ -35,7 +35,7 @@ fun DailyWeatherDisplay(
             .background(
                 brush = Brush.linearGradient(
                     listOf(
-                        MaterialTheme.colors.secondary,
+                        MaterialTheme.colors.primary,
                         MaterialTheme.colors.background
                     )
                 ),

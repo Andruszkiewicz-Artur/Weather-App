@@ -21,6 +21,10 @@ class WeatherViewModel @Inject constructor(
     var state by mutableStateOf(WeatherState())
         private set
 
+    init {
+        loadWeatherInfo()
+    }
+
     fun loadWeatherInfo() {
         viewModelScope.launch {
             state = state.copy(
