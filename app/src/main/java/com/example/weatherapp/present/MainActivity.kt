@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.present.weather.WeatherViewModel
 import com.example.weatherapp.present.weather.compose.DailyWeather
@@ -51,6 +52,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherAppTheme {
                 val navController = rememberNavController()
+
+                installSplashScreen()
 
                 Scaffold(
                     bottomBar = {
