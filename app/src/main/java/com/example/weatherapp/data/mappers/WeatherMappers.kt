@@ -2,6 +2,7 @@ package com.example.weatherapp.data.mappers
 
 import com.example.weatherapp.data.dto.WeatherDto
 import com.example.weatherapp.data.dto.WeatherDataDto
+import com.example.weatherapp.domain.weather.WeatherDailyData
 import com.example.weatherapp.domain.weather.WeatherData
 import com.example.weatherapp.domain.weather.WeatherInfo
 import com.example.weatherapp.domain.weather.WeatherType
@@ -49,5 +50,14 @@ fun WeatherDto.toWeatherInfo(): WeatherInfo {
     return WeatherInfo(
         weatherDataPerDay = weatherDataMap,
         currentWeatherData = currentWeatherData
+    )
+}
+
+fun WeatherInfo.toWeatherDailyData(index: Int): WeatherDailyData {
+    return WeatherDailyData(
+        data = weatherDataPerDay.get(index)?.first()?.time,
+        maxDegree = weatherDataPerDay.get(index)?.maxOf { it.temperatureCelsius },
+        minDegree = weatherDataPerDay.get(index)?.minOf { it.temperatureCelsius },
+        weatherType = weatherDataPerDay.get(index)?.get(11)?.weatherType
     )
 }

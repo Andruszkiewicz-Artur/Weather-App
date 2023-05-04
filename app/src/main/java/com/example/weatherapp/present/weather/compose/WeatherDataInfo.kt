@@ -34,7 +34,8 @@ fun WeatherDataInfo(
         Spacer(modifier = Modifier.width(4.dp))
         Text(
             text = "$value$unit",
-            style = textStyle
+            style = textStyle,
+            color = Color.White
         )
     }
 }
