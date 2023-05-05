@@ -32,7 +32,7 @@ fun HourlyWeatherDisplay(
     Box(
         modifier = Modifier
             .background(
-                brush = Brush.linearGradient(listOf(MaterialTheme.colors.primary, MaterialTheme.colors.background)),
+                brush = Brush.linearGradient(listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant)),
                 alpha = 0.5f,
                 shape = RoundedCornerShape(16.dp)
             )
