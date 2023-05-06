@@ -1,4 +1,4 @@
-package com.example.weatherapp.domain.weather
+package com.example.weatherapp.domain.model.remote.weather
 
 import androidx.annotation.DrawableRes
 import com.example.weatherapp.R

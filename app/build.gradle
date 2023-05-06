@@ -88,4 +88,10 @@ dependencies {
 
     // Splashscreen
     implementation "androidx.core:core-splashscreen:1.0.1"
+
+    // Room DB
+    def room_version = "2.5.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

@@ -1,7 +1,7 @@
 package com.example.weatherapp.domain.repository
 
 import com.example.weatherapp.domain.util.Resource
-import com.example.weatherapp.domain.weather.WeatherInfo
+import com.example.weatherapp.domain.model.remote.weather.WeatherInfo
 
 interface WeatherRepository {
 

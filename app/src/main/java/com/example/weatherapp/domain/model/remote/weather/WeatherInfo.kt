@@ -1,4 +1,4 @@
-package com.example.weatherapp.domain.weather
+package com.example.weatherapp.domain.model.remote.weather
 
 data class WeatherInfo(
     val weatherDataPerDay: Map<Int, List<WeatherData>>,

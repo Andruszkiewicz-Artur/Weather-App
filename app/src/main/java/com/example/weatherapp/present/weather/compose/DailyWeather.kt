@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.data.mappers.toWeatherDailyData
-import com.example.weatherapp.domain.weather.WeatherInfo
+import com.example.weatherapp.domain.model.remote.weather.WeatherInfo
 
 @Composable
 fun DailyWeather(
