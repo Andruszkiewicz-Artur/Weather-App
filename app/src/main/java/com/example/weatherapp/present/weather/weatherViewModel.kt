@@ -5,21 +5,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.data.data_source.LocationDatabase
 import com.example.weatherapp.domain.location.LocationTracker
 import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
-    private val locationTracker: LocationTracker
+    private val locationTracker: LocationTracker,
+    private val dao: LocationDatabase
 ):  ViewModel() {
 
     var state by mutableStateOf(WeatherState())
         private set
+
+    private val _eventFlow = MutableSharedFlow<WeatherUiEvent>()
 
     init {
         loadWeatherInfo()
@@ -53,6 +58,17 @@ class WeatherViewModel @Inject constructor(
                     isLoading = false,
                     error = "Make sure to grant permission"
                 )
+            }
+        }
+    }
+
+    fun onEvent(event: WeatherEvent) {
+        when (event) {
+            is WeatherEvent.removeLocation -> {
+                viewModelScope.launch {
+                    dao.dao.removeLocation(event.location)
+                    _eventFlow.emit(WeatherUiEvent.removeLocation)
+                }
             }
         }
     }
