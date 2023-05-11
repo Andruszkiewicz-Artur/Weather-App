@@ -1,7 +1,7 @@
 package com.example.weatherapp.data.mappers
 
-import com.example.weatherapp.data.dto.WeatherDto
-import com.example.weatherapp.data.dto.WeatherDataDto
+import com.example.weatherapp.data.dto.weather.WeatherDto
+import com.example.weatherapp.data.dto.weather.WeatherDataDto
 import com.example.weatherapp.domain.model.remote.weather.WeatherDailyData
 import com.example.weatherapp.domain.model.remote.weather.WeatherData
 import com.example.weatherapp.domain.model.remote.weather.WeatherInfo

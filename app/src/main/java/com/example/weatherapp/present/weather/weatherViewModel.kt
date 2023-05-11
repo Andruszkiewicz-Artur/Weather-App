@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.data.data_source.LocationDatabase
 import com.example.weatherapp.domain.location.LocationTracker
 import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.util.Resource
@@ -18,7 +17,7 @@ import javax.inject.Inject
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker,
-    private val dao: LocationDatabase
+//    private val dao: LocationDatabase
 ):  ViewModel() {
 
     var state by mutableStateOf(WeatherState())
@@ -62,14 +61,14 @@ class WeatherViewModel @Inject constructor(
         }
     }
 
-    fun onEvent(event: WeatherEvent) {
-        when (event) {
-            is WeatherEvent.removeLocation -> {
-                viewModelScope.launch {
-                    dao.dao.removeLocation(event.location)
-                    _eventFlow.emit(WeatherUiEvent.removeLocation)
-                }
-            }
-        }
-    }
+//    fun onEvent(event: WeatherEvent) {
+//        when (event) {
+//            is WeatherEvent.removeLocation -> {
+//                viewModelScope.launch {
+//                    dao.dao.removeLocation(event.location)
+//                    _eventFlow.emit(WeatherUiEvent.removeLocation)
+//                }
+//            }
+//        }
+//    }
 }

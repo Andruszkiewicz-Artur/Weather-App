@@ -1,8 +1,6 @@
 package com.example.weatherapp.di
 
 import android.app.Application
-import androidx.room.Room
-import com.example.weatherapp.data.data_source.LocationDatabase
 import com.example.weatherapp.data.remote.WeatherApi
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -35,14 +33,13 @@ object AppModule {
         return LocationServices.getFusedLocationProviderClient(app)
     }
 
-    @Provides
-    @Singleton
-    fun provideLocationDatabase(app: Application): LocationDatabase {
-        return Room.databaseBuilder(
-            app,
-            LocationDatabase::class.java,
-            LocationDatabase.DATABASE_NAME
-        ).build()
-    }
-
+//    @Provides
+//    @Singleton
+//    fun provideLocationDatabase(app: Application): LocationDatabase {
+//        return Room.databaseBuilder(
+//            app,
+//            LocationDatabase::class.java,
+//            LocationDatabase.DATABASE_NAME
+//        ).build()
+//    }
 }
