@@ -16,8 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository,
-    private val locationTracker: LocationTracker,
-//    private val dao: LocationDatabase
+    private val locationTracker: LocationTracker
 ):  ViewModel() {
 
     var state by mutableStateOf(WeatherState())
@@ -60,15 +59,4 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
-
-//    fun onEvent(event: WeatherEvent) {
-//        when (event) {
-//            is WeatherEvent.removeLocation -> {
-//                viewModelScope.launch {
-//                    dao.dao.removeLocation(event.location)
-//                    _eventFlow.emit(WeatherUiEvent.removeLocation)
-//                }
-//            }
-//        }
-//    }
 }

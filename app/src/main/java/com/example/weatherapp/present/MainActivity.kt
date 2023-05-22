@@ -8,8 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.present.weather.WeatherViewModel
@@ -42,9 +44,7 @@ class MainActivity : ComponentActivity() {
 
                 installSplashScreen()
 
-                Scaffold() {
-                    NavGraph(navController = navController)
-                }
+                NavGraph(navController = navController)
             }
         }
     }

@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.present.weather.WeatherState
@@ -23,14 +24,12 @@ import kotlin.math.roundToInt
 @Composable
 fun WeatherCard(
     state: WeatherState,
-    backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
     state.weatherInfo?.currentWeatherData?.let { data ->
-        Card(
-            backgroundColor = backgroundColor,
-            shape = RoundedCornerShape(10.dp),
-            modifier = modifier.padding(16.dp)
+        Box(
+            modifier = modifier
+                .padding(16.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -38,34 +37,27 @@ fun WeatherCard(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "Today ${
-                        data.time.format(
-                            DateTimeFormatter.ofPattern("HH:mm")
-                        )
-                    }",
-                    modifier = Modifier.align(Alignment.End),
-                    color = Color.White
-                )
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
                     painter = painterResource(id = data.weatherType.iconRes),
                     contentDescription = data.weatherType.weatherDesc,
-                    modifier = Modifier.width(200.dp)
+                    modifier = Modifier.fillMaxWidth(0.9f)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "${data.temperatureCelsius} C",
-                    fontSize = 50.sp,
-                    color = Color.White
+                    text = "${data.temperatureCelsius}°",
+                    style = MaterialTheme.typography.h1,
+                    color = MaterialTheme.colors.onBackground
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = data.weatherType.weatherDesc,
-                    fontSize = 20.sp,
-                    color = Color.White
+                    style = TextStyle().copy(
+                        color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f),
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Normal
+                    )
                 )
-                Spacer(modifier = modifier.height(16.dp))
+                Spacer(modifier = modifier.height(32.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
@@ -74,22 +66,22 @@ fun WeatherCard(
                         value = data.pressure.roundToInt(),
                         unit = "hpa",
                         icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_pressure),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
+                        iconTint = MaterialTheme.colors.onBackground,
+                        title = "Pressure"
                     )
                     WeatherDataInfo(
                         value = data.humidity.roundToInt(),
-                        unit = "$",
+                        unit = "%",
                         icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_drop),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
+                        iconTint = MaterialTheme.colors.primary,
+                        title = "Humidity"
                     )
                     WeatherDataInfo(
                         value = data.windSpeed.roundToInt(),
                         unit = "km/h",
                         icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_wind),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
+                        iconTint = MaterialTheme.colors.onBackground,
+                        title = "Wind Speed"
                     )
                 }
             }

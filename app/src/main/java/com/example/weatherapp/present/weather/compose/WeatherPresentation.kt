@@ -35,13 +35,9 @@ fun WeatherPresentation(
         ) {
             item {
                 WeatherCard(
-                    state = viewModel.state,
-                    backgroundColor = MaterialTheme.colors.primary
+                    state = viewModel.state
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 WeatherForecast(state = viewModel.state)
-                Spacer(modifier = Modifier.height(16.dp))
-                DailyWeather(weatherInfo = viewModel.state.weatherInfo)
             }
         }
         if (state.isLoading) {

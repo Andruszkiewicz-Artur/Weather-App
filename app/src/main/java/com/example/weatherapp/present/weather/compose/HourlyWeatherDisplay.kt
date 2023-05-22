@@ -31,9 +31,8 @@ fun HourlyWeatherDisplay(
     Box(
         modifier = Modifier
             .background(
-                brush = Brush.linearGradient(listOf(MaterialTheme.colors.primary, MaterialTheme.colors.primaryVariant)),
-                alpha = 0.5f,
-                shape = RoundedCornerShape(16.dp)
+                color = MaterialTheme.colors.onBackground.copy(alpha = 0.03f),
+                shape = RoundedCornerShape(40.dp)
             )
     ) {
         Column(
@@ -42,7 +41,8 @@ fun HourlyWeatherDisplay(
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                text = formattedTime,
+                text = "${weatherData.temperatureCelsius} C",
+                fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colors.onBackground
             )
 
@@ -53,8 +53,7 @@ fun HourlyWeatherDisplay(
             )
 
             Text(
-                text = "${weatherData.temperatureCelsius} C",
-                fontWeight = FontWeight.Bold,
+                text = formattedTime,
                 color = MaterialTheme.colors.onBackground
             )
         }
