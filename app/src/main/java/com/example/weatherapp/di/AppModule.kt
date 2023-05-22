@@ -32,14 +32,4 @@ object AppModule {
     fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
         return LocationServices.getFusedLocationProviderClient(app)
     }
-
-//    @Provides
-//    @Singleton
-//    fun provideLocationDatabase(app: Application): LocationDatabase {
-//        return Room.databaseBuilder(
-//            app,
-//            LocationDatabase::class.java,
-//            LocationDatabase.DATABASE_NAME
-//        ).build()
-//    }
 }

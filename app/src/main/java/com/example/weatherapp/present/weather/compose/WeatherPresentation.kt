@@ -42,7 +42,6 @@ fun WeatherPresentation(
                 WeatherForecast(state = viewModel.state)
                 Spacer(modifier = Modifier.height(16.dp))
                 DailyWeather(weatherInfo = viewModel.state.weatherInfo)
-                Spacer(modifier = Modifier.height(50.dp))
             }
         }
         if (state.isLoading) {
