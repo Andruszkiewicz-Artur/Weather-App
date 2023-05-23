@@ -6,10 +6,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.domain.location.LocationTracker
+import com.example.weatherapp.domain.model.remote.weather.WeatherData
+import com.example.weatherapp.domain.model.remote.weather.WeatherInfo
 import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,8 +37,13 @@ class WeatherViewModel @Inject constructor(
             locationTracker.getCurrentLocation()?.let { location ->
                 when(val result = repository.getWeatherData(location.latitude, location.longitude)) {
                     is Resource.Success -> {
+                        val todayHourlyInfo: List<WeatherData> = emptyList()
+
+
+
                         state = state.copy(
                             weatherInfo = result.data,
+                            todayHourlyInfo = take24HWeather(result.data),
                             isLoading = false,
                             error = null
                         )
@@ -43,6 +51,7 @@ class WeatherViewModel @Inject constructor(
                     is Resource.Error -> {
                         state = state.copy(
                             weatherInfo = null,
+                            todayHourlyInfo = emptyList(),
                             isLoading = false,
                             error = result.message
                         )
@@ -55,5 +64,24 @@ class WeatherViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun take24HWeather(weather: WeatherInfo?): List<WeatherData> {
+        val currentWeather = mutableListOf<WeatherData>()
+        val currentHour = LocalDateTime.now().hour + 1
+
+        weather?.weatherDataPerDay?.forEach {
+            if (it.key == 0) {
+                for (i in currentHour..23) {
+                    currentWeather.add(it.value[i])
+                }
+            } else if (it.key == 1) {
+                for (i in 0..23 - (23 - currentHour)) {
+                    currentWeather.add(it.value[i])
+                }
+            }
+        }
+
+        return currentWeather
     }
 }

@@ -26,7 +26,7 @@ fun WeatherForecast(
     modifier: Modifier = Modifier,
     navHostController: NavHostController
 ) {
-    state.weatherInfo?.weatherDataPerDay?.get(0)?.let { data ->
+    state.todayHourlyInfo.let { data ->
         Column(
             modifier = Modifier
                 .fillMaxWidth()
