@@ -1,5 +1,6 @@
 package com.example.weatherapp.present.weather.compose
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -15,12 +16,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherapp.present.weather.WeatherState
+import androidx.navigation.NavHostController
+import com.example.weatherapp.present.WeatherState
+import com.example.weatherapp.unit.navigation.NavigationScreen
 
 @Composable
 fun WeatherForecast(
     state: WeatherState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navHostController: NavHostController
 ) {
     state.weatherInfo?.weatherDataPerDay?.get(0)?.let { data ->
         Column(
@@ -52,7 +56,11 @@ fun WeatherForecast(
                             fontWeight = FontWeight.Medium,
                             fontSize = 16.sp,
                             color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f)
-                        )
+                        ),
+                        modifier = Modifier
+                            .clickable {
+                                navHostController.navigate(NavigationScreen.Daily.route)
+                            }
                     )
 
                     Icon(

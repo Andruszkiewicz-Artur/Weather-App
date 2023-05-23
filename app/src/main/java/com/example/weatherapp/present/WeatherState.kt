@@ -1,4 +1,4 @@
-package com.example.weatherapp.present.weather
+package com.example.weatherapp.present
 
 import com.example.weatherapp.domain.model.remote.weather.WeatherInfo
 

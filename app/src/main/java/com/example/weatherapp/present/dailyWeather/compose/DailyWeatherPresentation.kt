@@ -1,4 +1,4 @@
-package com.example.weatherapp.present.weather.compose
+package com.example.weatherapp.present.dailyWeather.compose
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -11,7 +11,7 @@ import com.example.weatherapp.data.mappers.toWeatherDailyData
 import com.example.weatherapp.domain.model.remote.weather.WeatherInfo
 
 @Composable
-fun DailyWeather(
+fun DailyWeatherPresentation(
     weatherInfo: WeatherInfo?
 ) {
     weatherInfo?.weatherDataPerDay?.let { data ->
@@ -19,17 +19,18 @@ fun DailyWeather(
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            Text(
-                text = "Daily weather",
-                fontSize = 20.sp,
-                color = MaterialTheme.colors.onBackground
+            DailyCardWeather(
+                weatherDailyData = weatherInfo.toWeatherDailyData(0)
             )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             data.forEach {
-                DailyWeatherDisplay(
-                    weatherDailyData = weatherInfo.toWeatherDailyData(it.key)
-                )
+                if (it.key != 0) {
+                    DailyWeather(
+                        weatherDailyData = weatherInfo.toWeatherDailyData(it.key)
+                    )
+                }
             }
         }
     }

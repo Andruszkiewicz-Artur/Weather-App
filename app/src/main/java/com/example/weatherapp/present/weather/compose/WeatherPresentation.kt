@@ -2,9 +2,7 @@ package com.example.weatherapp.present.weather.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -14,13 +12,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.weatherapp.present.weather.WeatherViewModel
+import androidx.navigation.NavHostController
+import com.example.weatherapp.present.WeatherViewModel
 
 @Composable
 fun WeatherPresentation(
-    viewModel: WeatherViewModel = hiltViewModel()
+    viewModel: WeatherViewModel = hiltViewModel(),
+    navHostController: NavHostController
 ) {
     val state = viewModel.state
 
@@ -35,9 +34,12 @@ fun WeatherPresentation(
         ) {
             item {
                 WeatherCard(
-                    state = viewModel.state
+                    state = state
                 )
-                WeatherForecast(state = viewModel.state)
+                WeatherForecast(
+                    state = state,
+                    navHostController = navHostController
+                )
             }
         }
         if (state.isLoading) {

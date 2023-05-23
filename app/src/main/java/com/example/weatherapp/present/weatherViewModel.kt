@@ -1,4 +1,4 @@
-package com.example.weatherapp.present.weather
+package com.example.weatherapp.present
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -9,7 +9,6 @@ import com.example.weatherapp.domain.location.LocationTracker
 import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,8 +20,6 @@ class WeatherViewModel @Inject constructor(
 
     var state by mutableStateOf(WeatherState())
         private set
-
-    private val _eventFlow = MutableSharedFlow<WeatherUiEvent>()
 
     init {
         loadWeatherInfo()
