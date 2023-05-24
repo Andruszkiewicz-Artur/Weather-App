@@ -25,7 +25,7 @@ fun WeatherPresentation(
 
     Box(
         modifier = Modifier
-            .fillMaxSize(1f)
+            .fillMaxSize()
     ) {
         LazyColumn(
             modifier = Modifier
