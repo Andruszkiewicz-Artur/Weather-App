@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pogoda</string>
+    <string name="api_key">a989330f8emsh32bf2225ba6bed5p189908jsn02304c89d5ad</string>
+    <string name="ClearSky">Czyste Niebo</string>
+    <string name="Mainly_clear">Przede wszystkim jasne</string>
+    <string name="Partly_cloudy">Częściowe zachmurzenie</string>
+    <string name="Overcast">Pochmurny</string>
+    <string name="Foggy">Mglisty</string>
+    <string name="Depositing_rime_fog">Osadzanie się mgły szronowej</string>
+    <string name="Light_drizzle">Lekka mżawka</string>
+    <string name="Moderate_drizzle">Umiarkowana mżawka</string>
+    <string name="Dense_drizzle">Gęsta mżawka</string>
+    <string name="Slight_freezing_drizzle">Lekka marznąca mżawka</string>
+    <string name="Dense_freezing_drizzle">Gęsta marznąca mżawka</string>
+    <string name="Slight_rain">Lekki deszcz</string>
+    <string name="Rainy">Deszczowy</string>
+    <string name="Heavy_rain">Ulewa</string>
+    <string name="Heavy_freezing_rain">Ulewny marznący deszcz</string>
+    <string name="Slight_snow_fall">Lekki opad śniegu</string>
+    <string name="Moderate_snow_fall">Umiarkowane opady śniegu</string>
+    <string name="Heavy_snow_fall">Obfite opady śniegu</string>
+    <string name="Snow_grains">Ziarna śniegu</string>
+    <string name="Slight_rain_showers">Slight rain showers</string>
+    <string name="Moderate_rain_showers">Przelotne opady deszczu</string>
+    <string name="Violent_rain_showers">Gwałtowne opady deszczu</string>
+    <string name="Light_snow_showers">Lekkie opady śniegu</string>
+    <string name="Heavy_snow_showers">Silne opady śniegu</string>
+    <string name="Moderate_thunderstorm">Moderate thunderstorm</string>
+    <string name="Thunderstorm_with_slight_hail">Burza z lekkim gradem</string>
+    <string name="Thunderstorm_with_heavy_hail">Burza z silnym gradem</string>
+    <string name="Tommorow">Jutro</string>
+    <string name="Pressure">Ciśnienie</string>
+    <string name="Humidity">Wilgotność</string>
+    <string name="Wind_Speed">Prędkość wiatru</string>
+    <string name="sevenDays">7-days</string>
+    <string name="Today">Dzisiaj</string>
+</resources>

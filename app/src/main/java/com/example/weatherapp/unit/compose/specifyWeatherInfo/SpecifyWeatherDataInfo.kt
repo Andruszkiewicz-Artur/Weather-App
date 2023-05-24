@@ -7,6 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import com.example.weatherapp.R
 import kotlin.math.roundToInt
@@ -26,21 +27,21 @@ fun SpecifyWeatherDataInfo(
             unit = "hpa",
             icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
             iconTint = MaterialTheme.colors.onBackground,
-            title = "Pressure"
+            title = stringResource(id = R.string.Pressure)
         )
         WeatherDataInfo(
             value = humidity.roundToInt(),
             unit = "%",
             icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
             iconTint = MaterialTheme.colors.primary,
-            title = "Humidity"
+            title = stringResource(id = R.string.Humidity)
         )
         WeatherDataInfo(
             value = windSpeed.roundToInt(),
             unit = "km/h",
             icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
             iconTint = MaterialTheme.colors.onBackground,
-            title = "Wind Speed"
+            title = stringResource(id = R.string.Wind_Speed)
         )
     }
 }

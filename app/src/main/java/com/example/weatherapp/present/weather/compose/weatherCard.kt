@@ -9,9 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
@@ -39,7 +41,7 @@ fun WeatherCard(
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
                     painter = painterResource(id = data.weatherType.iconRes),
-                    contentDescription = data.weatherType.weatherDesc,
+                    contentDescription = stringResource(id = data.weatherType.weatherDesc),
                     modifier = Modifier.fillMaxWidth(0.9f)
                 )
                 Spacer(modifier = Modifier.height(16.dp))
@@ -49,11 +51,12 @@ fun WeatherCard(
                     color = MaterialTheme.colors.onBackground
                 )
                 Text(
-                    text = data.weatherType.weatherDesc,
+                    text = stringResource(id = data.weatherType.weatherDesc),
                     style = TextStyle().copy(
                         color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f),
                         fontSize = 32.sp,
-                        fontWeight = FontWeight.Normal
+                        fontWeight = FontWeight.Normal,
+                        textAlign = TextAlign.Center
                     )
                 )
                 Spacer(modifier = modifier.height(32.dp))

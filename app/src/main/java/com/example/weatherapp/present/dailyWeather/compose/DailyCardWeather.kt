@@ -14,9 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.weatherapp.R
 import com.example.weatherapp.domain.model.remote.weather.WeatherDailyData
 import com.example.weatherapp.unit.compose.specifyWeatherInfo.SpecifyWeatherDataInfo
 
@@ -37,7 +39,7 @@ fun DailyCardWeather(
         ) {
             Image(
                 painter = painterResource(id = weatherDailyData.weatherType!!.iconRes),
-                contentDescription = weatherDailyData.weatherType.weatherDesc,
+                contentDescription = stringResource(id = weatherDailyData.weatherType.weatherDesc),
                 modifier = Modifier
                     .fillMaxWidth(0.4f)
             )
@@ -46,7 +48,7 @@ fun DailyCardWeather(
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = "Tommorow",
+                    text = stringResource(id = R.string.Tommorow),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Normal
                 )
@@ -69,7 +71,7 @@ fun DailyCardWeather(
                 }
 
                 Text(
-                    text = weatherDailyData.weatherType.weatherDesc,
+                    text = stringResource(id = weatherDailyData.weatherType.weatherDesc),
                     style = MaterialTheme.typography.subtitle2.copy(color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f))
                 )
             }

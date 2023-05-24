@@ -19,8 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.weatherapp.domain.model.remote.weather.WeatherDailyData
 import com.example.weatherapp.unit.extensions.toDegree
 import java.time.format.DateTimeFormatter
@@ -59,7 +61,9 @@ fun DailyWeather(
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = weatherDailyData.weatherType?.weatherDesc ?: ""
+                text = stringResource(id = weatherDailyData.weatherType?.weatherDesc ?: 0),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Light
             )
         }
 

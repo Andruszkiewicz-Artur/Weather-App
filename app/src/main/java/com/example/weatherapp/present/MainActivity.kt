@@ -2,7 +2,11 @@ package com.example.weatherapp.present
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
@@ -16,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import com.example.weatherapp.unit.navigation.NavGraph
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

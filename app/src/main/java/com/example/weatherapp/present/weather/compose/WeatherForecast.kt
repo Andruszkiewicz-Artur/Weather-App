@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.weatherapp.R
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,7 +40,7 @@ fun WeatherForecast(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Today",
+                    text = stringResource(id = R.string.Today),
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         fontSize = 16.sp,
@@ -51,7 +52,7 @@ fun WeatherForecast(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "7-days",
+                        text = stringResource(id = R.string.sevenDays),
                         style = TextStyle(
                             fontWeight = FontWeight.Medium,
                             fontSize = 16.sp,
