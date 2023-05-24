@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -17,54 +18,68 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.domain.model.remote.weather.WeatherDailyData
+import com.example.weatherapp.unit.compose.specifyWeatherInfo.SpecifyWeatherDataInfo
 
 @Composable
 fun DailyCardWeather(
     weatherDailyData: WeatherDailyData
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+    Column(
         modifier = Modifier
             .fillMaxWidth(0.95f),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = weatherDailyData.weatherType!!.iconRes),
-            contentDescription = weatherDailyData.weatherType.weatherDesc,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .fillMaxWidth(0.4f)
-        )
-        Column(
-            verticalArrangement = Arrangement.SpaceAround,
-            horizontalAlignment = Alignment.Start
+                .fillMaxWidth()
         ) {
-            Text(
-                text = "Tommorow",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Normal
+            Image(
+                painter = painterResource(id = weatherDailyData.weatherType!!.iconRes),
+                contentDescription = weatherDailyData.weatherType.weatherDesc,
+                modifier = Modifier
+                    .fillMaxWidth(0.4f)
             )
-
-            Row(
-                verticalAlignment = Alignment.Bottom
+            Column(
+                verticalArrangement = Arrangement.SpaceAround,
+                horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = "${weatherDailyData.maxDegree}",
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.ExtraBold,
+                    text = "Tommorow",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Normal
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+
+                Row(
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    Text(
+                        text = "${weatherDailyData.maxDegree}",
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "/${weatherDailyData.minDegree}°",
+                        fontSize = 36.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f)
+                    )
+                }
+
                 Text(
-                    text = "/${weatherDailyData.minDegree}°",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f)
+                    text = weatherDailyData.weatherType.weatherDesc,
+                    style = MaterialTheme.typography.subtitle2.copy(color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f))
                 )
             }
-
-            Text(
-                text = weatherDailyData.weatherType.weatherDesc,
-                style = MaterialTheme.typography.subtitle2.copy(color = MaterialTheme.colors.onBackground.copy(alpha = 0.4f))
-            )
         }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        SpecifyWeatherDataInfo(
+            pressure = weatherDailyData.averagePressure ?: 0.0,
+            humidity = weatherDailyData.averageHumidity ?: 0.0,
+            windSpeed = weatherDailyData.averageWindSpeed ?: 0.0
+        )
     }
 }

@@ -1,4 +1,4 @@
-package com.example.weatherapp.present.weather.compose
+package com.example.weatherapp.unit.compose.specifyWeatherInfo
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

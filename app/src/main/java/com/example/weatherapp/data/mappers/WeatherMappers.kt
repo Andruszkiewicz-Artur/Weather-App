@@ -58,6 +58,33 @@ fun WeatherInfo.toWeatherDailyData(index: Int): WeatherDailyData {
         data = weatherDataPerDay.get(index)?.first()?.time,
         maxDegree = weatherDataPerDay.get(index)?.maxOf { it.temperatureCelsius },
         minDegree = weatherDataPerDay.get(index)?.minOf { it.temperatureCelsius },
-        weatherType = weatherDataPerDay.get(index)?.get(11)?.weatherType
+        weatherType = weatherDataPerDay.get(index)?.get(11)?.weatherType,
+        averageWindSpeed = weatherDataPerDay.get(index)?.let {
+            var result: Double = 0.0
+
+            it.forEach {
+                result += it.windSpeed
+            }
+
+            result/it.size
+        },
+        averageHumidity = weatherDataPerDay.get(index)?.let {
+            var result: Double = 0.0
+
+            it.forEach {
+                result += it.humidity
+            }
+
+            result/it.size
+        },
+        averagePressure = weatherDataPerDay.get(index)?.let {
+            var result: Double = 0.0
+
+            it.forEach {
+                result += it.pressure
+            }
+
+            result/it.size
+        }
     )
 }

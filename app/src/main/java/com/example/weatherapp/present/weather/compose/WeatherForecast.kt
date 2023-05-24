@@ -51,7 +51,7 @@ fun WeatherForecast(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "10-days",
+                        text = "7-days",
                         style = TextStyle(
                             fontWeight = FontWeight.Medium,
                             fontSize = 16.sp,

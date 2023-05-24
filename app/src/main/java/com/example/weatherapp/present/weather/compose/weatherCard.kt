@@ -14,7 +14,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.weatherapp.R
 import com.example.weatherapp.present.WeatherState
+import com.example.weatherapp.unit.compose.specifyWeatherInfo.SpecifyWeatherDataInfo
+import com.example.weatherapp.unit.compose.specifyWeatherInfo.WeatherDataInfo
 import kotlin.math.roundToInt
 
 @Composable
@@ -54,32 +57,11 @@ fun WeatherCard(
                     )
                 )
                 Spacer(modifier = modifier.height(32.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    WeatherDataInfo(
-                        value = data.pressure.roundToInt(),
-                        unit = "hpa",
-                        icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_pressure),
-                        iconTint = MaterialTheme.colors.onBackground,
-                        title = "Pressure"
-                    )
-                    WeatherDataInfo(
-                        value = data.humidity.roundToInt(),
-                        unit = "%",
-                        icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_drop),
-                        iconTint = MaterialTheme.colors.primary,
-                        title = "Humidity"
-                    )
-                    WeatherDataInfo(
-                        value = data.windSpeed.roundToInt(),
-                        unit = "km/h",
-                        icon = ImageVector.vectorResource(id = com.example.weatherapp.R.drawable.ic_wind),
-                        iconTint = MaterialTheme.colors.onBackground,
-                        title = "Wind Speed"
-                    )
-                }
+                SpecifyWeatherDataInfo(
+                    pressure = data.pressure,
+                    humidity = data.humidity,
+                    windSpeed = data.windSpeed
+                )
             }
         }
     }

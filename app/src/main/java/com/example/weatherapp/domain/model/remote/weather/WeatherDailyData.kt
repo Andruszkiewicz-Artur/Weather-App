@@ -6,5 +6,8 @@ data class WeatherDailyData(
     val data: LocalDateTime?,
     val maxDegree: Double?,
     val minDegree: Double?,
-    val weatherType: WeatherType?
+    val weatherType: WeatherType?,
+    val averageWindSpeed: Double?,
+    val averageHumidity: Double?,
+    val averagePressure: Double?,
 )
