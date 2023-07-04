@@ -26,6 +26,9 @@ fun WeatherPresentation(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(
+                color = MaterialTheme.colors.background
+            )
     ) {
         LazyColumn(
             modifier = Modifier
@@ -48,11 +51,20 @@ fun WeatherPresentation(
             )
         }
         state.error?.let { error ->
-            Text(
-                text = error,
-                color = Color.Red,
-                textAlign = TextAlign.Center
-            )
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        color = MaterialTheme.colors.background
+                    )
+            ) {
+                Text(
+                    text = error,
+                    color = Color.Red,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }
